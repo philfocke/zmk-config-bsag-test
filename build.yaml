@@ -1,8 +1,12 @@
 include:
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble//zmk
     shield: totem_left
-  - board: seeeduino_xiao_ble
+    artifact-name: totem_left
+  - board: xiao_ble//zmk
     shield: totem_right
-  - board: seeeduino_xiao_ble
-    shield: settings_reset
+    artifact-name: totem_right
 # there is no settingsreset (needed) for the XIAO
+# NOTE: the board MUST carry the `//zmk` variant suffix. Plain `xiao_ble` builds
+# Zephyr's stock board definition, which has no ZMK defconfig -> no Bluetooth at all.
+# The suffix contains slashes, so artifact-name must be set explicitly: the default
+# is derived from the board name and the slashes break the output path.
